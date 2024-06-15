@@ -134,7 +134,7 @@ func (e *elasticsearchExporter) pushLogRecord(ctx context.Context, resource pcom
 	if err != nil {
 		return fmt.Errorf("Failed to encode log event: %w", err)
 	}
-	return pushDocuments(ctx, fIndex, document, e.bulkIndexer)
+	return pushDocumentsLog(e.Logger, ctx, fIndex, document, e.bulkIndexer)
 }
 
 func (e *elasticsearchExporter) pushTraceData(
